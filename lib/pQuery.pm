@@ -80,7 +80,7 @@ sub _init {
 #                 $selector = $this->_clean([$1], $context);
             }
             else {
-                my $elem = $document->getElementById($3);
+                my ($elem) = map {$_->getElementById($3)} grep {ref $_} @$document;
                 if ($elem) {
                     @$this = $elem;
                     return $this;
